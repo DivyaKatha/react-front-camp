@@ -1,0 +1,33 @@
+.filter{
+    height:40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-weight: bold;
+}
+
+.container{
+display: flex;
+justify-content: space-between;
+}
+
+ul{
+    list-style-type: none;
+    margin:0px;
+    padding: 0px;
+}
+
+li{
+    display: inline-block;
+    margin:5px;
+}
+
+li a {
+    text-decoration: none;
+    margin: 0px;
+    color: white;
+}
+
+.found{
+    margin:5px;
+}
+

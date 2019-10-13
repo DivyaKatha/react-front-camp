@@ -1,0 +1,7 @@
+.movie{
+    background: green;
+    height: 400px;
+    width: 200px;
+    display: inline-block;
+    border: 1px solid white;
+}
