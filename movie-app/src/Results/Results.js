@@ -1,15 +1,14 @@
-import React, {Component} from 'react'
-import Movie from '../Movie/Movie'
+import React, {Component} from 'react';
+import Movie from '../Movie/Movie';
+import './Results.css'
 
 class Results extends Component {
-
-    movies = [0,1,2,3,4,5,7,8,9,10];
-    
+   
     render() {
         return (
-        <div>{
-            this.movies.map(movie => {
-                return <Movie></Movie>
+        <div className="results" id="results">{
+            this.props.movies.map((movie, index) => {
+                return <Movie movie={movie} key={movie.id} selected={this.props.selectMovie}></Movie>
             })
         }</div>
         );

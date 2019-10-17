@@ -2,14 +2,70 @@ import React, {Component} from 'react'
 import '../Search/Search.css'
 
 class Search extends Component {
+
+    state = {
+        input: '',
+        category: 'title'
+    }
+
+    highlightClass = {
+        backgroundColor: '#ff0000',
+        color:'white' ,
+        width: '100px',
+        height: '30px',
+        margin: '10px'
+    }
+
+    defaultClass ={
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        color:'white' ,
+        width: '100px',
+        height: '30px',
+        margin: '10px'
+    }
+   
+    titleStyle = {...this.highlightClass};
+
+    genreStyle = {...this.defaultClass}
+
+    getInputValue = (eve) => {
+        this.setState({
+            input: eve.target.value
+        })
+    }
+
+    setCategory = (cat) => {
+        this.setState({category: cat});
+        if(cat ==='title'){
+            this.titleStyle = {...this.highlightClass};
+              this.genreStyle = {...this.defaultClass}
+        }
+
+        if(cat ==='genre'){
+            this.titleStyle = {...this.defaultClass}
+              this.genreStyle = {...this.highlightClass};
+        }
+     
+        
+    }
+
+    onSearch = () => {
+        this.props.search(this.state.input, this.state.category);
+    }
+
     render() {
         return (
         <div className="search">
             <div className="searchInput">
-                <form className="searchForm">
-                    <input id="inputValue" type="text" placeholder="search..."></input>
-                    <button id="btnSearch">Search</button>
-                </form>
+                <div className="searchForm">
+                    <input id="inputValue" type="text" placeholder="search..." onChange={this.getInputValue} ></input>
+                    <button id="btnSearch" onClick={this.onSearch}>Search</button>
+                </div>
+                <div style={{'color': 'white', 'fontWeight': 'bold'}}>
+                    <span>SEARCH BY:</span>
+                    <button onClick={() => this.setCategory('title')} id="btnTitle" style={this.titleStyle}>Title</button>
+                   <button onClick={() => this.setCategory('genre')}  id="btnGenre" style={this.genreStyle}>Genre</button>
+                </div>
             </div>
         </div>
         );

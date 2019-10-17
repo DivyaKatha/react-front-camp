@@ -19,6 +19,7 @@
     width: 800px;
     height: 30px;
     border-radius: 10px;
+    padding: 5px;
 }
 
 #btnSearch{
