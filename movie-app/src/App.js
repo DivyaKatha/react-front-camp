@@ -3,8 +3,8 @@ import './App.css';
 import Home from './Home/Home'
 import ViewMovie from './ViewMovie/ViewMovie'
 import axios from 'axios';
-import ReactDOM from 'react-dom';
-import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
+import { BrowserRouter, Route} from 'react-router-dom';
+
 
 class App extends Component {
   state = {
@@ -84,15 +84,22 @@ setSelectedMovie = (id) => {
 
 render(){
   return (
+    <BrowserRouter>
     <div className="App">
-      <Home movies={this.state.movies} 
+      {/* <Home movies={this.state.movies} 
       onSearch={this.onSearchHandler} 
       sortBy={this.onSortHandler} 
       selectedMovie={this.setSelectedMovie}>
       </Home>
-      <ViewMovie  movie={{...this.state.selectedMovie}} />
+      <ViewMovie  movie={{...this.state.selectedMovie}} /> */}
+      <Route path='/' exact render={() => <Home movies={this.state.movies} 
+      onSearch={this.onSearchHandler} 
+      sortBy={this.onSortHandler} 
+      selectedMovie={this.setSelectedMovie}>
+      </Home>}/>
+      <Route path='/viewMovie' render={() => <ViewMovie  movie={{...this.state.selectedMovie}}/>} />
     </div>
-
+    </BrowserRouter>
   );
 }
 }

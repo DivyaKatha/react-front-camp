@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import './ViewMovie.css'
+import './ViewMovie.css';
+import {Link} from 'react-router-dom';
 
 class ViewMovie extends Component{
 
@@ -13,7 +14,9 @@ class ViewMovie extends Component{
                 <p>{this.props.movie.tagline}</p>
                 <p>{this.props.movie.release_date}</p>
                 <p>{this.props.movie.overview}</p>
+                <Link to="/">Back to Home</Link>
             </div>
+            
         </div>
     }
 }
