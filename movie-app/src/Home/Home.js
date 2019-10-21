@@ -16,7 +16,9 @@ class Home extends Component {
         axios.get('https://reactjs-cdp.herokuapp.com/movies').then((data) => {
         this.setState({ movies: data.data.data });
         this.setState({ fullList: data.data.data })
+        this.props.setMovies([...this.state.fullList]);
         })
+     
     }
     
     onSearchHandler = (input, category) => {

@@ -8,20 +8,22 @@ class Search extends Component {
         category: 'title'
     }
 
-    highlightClass = {
-        backgroundColor: '#ff0000',
+    btnStyle = {
         color:'white' ,
         width: '100px',
         height: '30px',
-        margin: '10px'
+        margin: '10px',
+        borderRadius: '10px'
     }
 
-    defaultClass ={
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        color:'white' ,
-        width: '100px',
-        height: '30px',
-        margin: '10px'
+    highlightClass = {
+        ...this.btnStyle,
+        backgroundColor: '#ff0000'
+    }
+
+    defaultClass = {
+        ...this.btnStyle,
+        backgroundColor: 'rgba(0,0,0,0.5)'
     }
    
     titleStyle = {...this.highlightClass};
@@ -38,15 +40,13 @@ class Search extends Component {
         this.setState({category: cat});
         if(cat ==='title'){
             this.titleStyle = {...this.highlightClass};
-              this.genreStyle = {...this.defaultClass}
+            this.genreStyle = {...this.defaultClass}
         }
 
         if(cat ==='genre'){
             this.titleStyle = {...this.defaultClass}
-              this.genreStyle = {...this.highlightClass};
-        }
-     
-        
+            this.genreStyle = {...this.highlightClass};
+        }   
     }
 
     onSearch = () => {
