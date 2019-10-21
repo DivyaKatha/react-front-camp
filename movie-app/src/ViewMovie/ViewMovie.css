@@ -5,7 +5,10 @@
     justify-content: space-evenly;
     padding: 10px;
     color: white;
+}
 
+.posterStyle{
+    border: 1px solid white;
 }
 
 .poster{

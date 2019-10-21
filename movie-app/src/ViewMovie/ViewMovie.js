@@ -12,7 +12,10 @@ class ViewMovie extends Component{
   
     headerStyle = {
       'text-align': 'left',
-      'padding': '10px'
+      'padding': '5px',
+      'backgroundColor': 'grey',
+      'text-align': 'center',
+      'color': 'white'
     }
     findCommonElement(array1, array2) { 
         for(let i = 0; i < array1.length; i++) { 
@@ -39,12 +42,12 @@ class ViewMovie extends Component{
     render() {
     
         if(this.state.genreMovies.length){
-            var header = <h3>Films by same genre</h3>
+            var header = <h3>FILMS BY SIMILAR GENRE</h3>
         }
         return <div>
             <div className="viewMovie">
             <div className="poster">
-                <img src={this.props.movie.poster_path}></img>
+                <img src={this.props.movie.poster_path} className="posterStyle"></img>
             </div>
             <div className="details">
             <Title></Title>
@@ -52,6 +55,7 @@ class ViewMovie extends Component{
                 <p>{this.props.movie.tagline}</p>
                 <p>{this.props.movie.release_date}</p>
                 <p>{this.props.movie.overview}</p>
+                <p>{  this.props.movie.runtime? this.props.movie.runtime + ' min': null}</p>
                 <Link to="/">Back to home</Link>
             </div>      
            </div>
