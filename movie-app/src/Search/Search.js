@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import '../Search/Search.css'
+import '../Search/Search.css';
+import Title from '../Title/Title';
 
 class Search extends Component {
 
@@ -57,6 +58,7 @@ class Search extends Component {
         return (
         <div className="search">
             <div className="searchInput">
+                <Title></Title>
                 <div className="searchForm">
                     <input id="inputValue" type="text" placeholder="search..." onChange={this.getInputValue} ></input>
                     <button id="btnSearch" onClick={this.onSearch}>Search</button>

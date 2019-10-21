@@ -2,13 +2,18 @@ import React, {Component} from 'react';
 import './ViewMovie.css';
 import {Link} from 'react-router-dom';
 import Results from '../Results/Results';
+import Title from '../Title/Title';
 
 class ViewMovie extends Component{
 
     state = {
         genreMovies: []
     }
-
+  
+    headerStyle = {
+      'text-align': 'left',
+      'padding': '10px'
+    }
     findCommonElement(array1, array2) { 
         for(let i = 0; i < array1.length; i++) { 
             for(let j = 0; j < array2.length; j++) { 
@@ -30,10 +35,11 @@ class ViewMovie extends Component{
             genreMovies: genreMovies
         });
     }
-
+    
     render() {
+    
         if(this.state.genreMovies.length){
-            var header = <h3>SAME GENRE</h3>
+            var header = <h3>Films by same genre</h3>
         }
         return <div>
             <div className="viewMovie">
@@ -41,14 +47,15 @@ class ViewMovie extends Component{
                 <img src={this.props.movie.poster_path}></img>
             </div>
             <div className="details">
+            <Title></Title>
                 <p>{this.props.movie.title}</p>
                 <p>{this.props.movie.tagline}</p>
                 <p>{this.props.movie.release_date}</p>
                 <p>{this.props.movie.overview}</p>
-                <Link to="/">Back to Home</Link>
+                <Link to="/">Back to home</Link>
             </div>      
            </div>
-            { header }
+           <div style={this.headerStyle}> { header }</div> 
             <div><Results movies={[...this.state.genreMovies]}></Results>
           </div>
         </div>
