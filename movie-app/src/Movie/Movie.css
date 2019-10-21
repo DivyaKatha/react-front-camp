@@ -3,7 +3,8 @@
     display: inline-block;
     border: 1px solid white;
     margin: 10px;
-    color: whitesmoke
+    color: whitesmoke;
+    height: 600px
 }
 
 img{
