@@ -87,7 +87,7 @@ class Home extends Component {
             <div className="home">
                 <Search search={(input, category) => this.onSearchHandler(input, category)} ></Search>
                 <Filter count={this.state.movies.length} sortBy={this.onSortHandler} ></Filter>
-                <Results movies={[...this.state.movies]} selectMovie={this.setSelectedMovie}></Results>
+                <Results movies={[this.state.movies]} selectMovie={this.setSelectedMovie}></Results>
             </div>
         );
     }
