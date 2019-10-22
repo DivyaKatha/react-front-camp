@@ -33,7 +33,11 @@ class Home extends Component {
          }
          else if(category === 'genre'){
             searchResults = this.state.fullList.filter((movie) => {
-             return movie.genres.includes(input);
+             let genreList = [];
+             movie.genres.forEach(element => {
+                genreList.push(element.toUpperCase());
+              });
+             return genreList.includes(input.toUpperCase());
            })
          }
          
