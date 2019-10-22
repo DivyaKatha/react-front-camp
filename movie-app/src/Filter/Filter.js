@@ -22,7 +22,7 @@ class Filter extends Component {
         'borderRadius': '10px' 
     }
    
-    releaseStyle = {...this.highlightClass};
+    releaseStyle = {...this.defaultClass};
 
     ratingStyle  = {...this.defaultClass}
 

@@ -28,7 +28,7 @@ render(){
     <BrowserRouter>
     <div className="App">
       <Route path='/' exact render={() => <Home  selectedMovie={this.setSelectedMovie} setMovies={this.setMovies}/>}/>
-      <Route path='/viewMovie' render={() => <ViewMovie  movie={{...this.state.selectedMovie}}  movies={[...this.state.movies]}/>} />
+      <Route path='/viewMovie' render={() => <ViewMovie  movie={{...this.state.selectedMovie}}  movies={[...this.state.movies]} />} />
     </div>
     </BrowserRouter>
   );

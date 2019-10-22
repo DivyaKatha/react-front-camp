@@ -47,8 +47,8 @@ class Home extends Component {
     }
     
     compareReleaseDate (a,b) {
-      let adate = new Date(a);
-      let bdate = new Date(b);
+      let adate = new Date(a.release_date);
+      let bdate = new Date(b.release_date);
       if (adate.getTime() > bdate.getTime()) return 1;
       if (bdate.getTime() > adate.getTime()) return -1;
       return 0;

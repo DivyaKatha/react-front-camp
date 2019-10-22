@@ -38,6 +38,10 @@ class ViewMovie extends Component{
             genreMovies: genreMovies
         });
     }
+
+    setSelectedMovie = (movie) => {
+        this.props.selectedMovie(movie);
+      }
     
     render() {
     
@@ -60,7 +64,7 @@ class ViewMovie extends Component{
             </div>      
            </div>
            <div style={this.headerStyle}> { header }</div> 
-            <div><Results movies={[...this.state.genreMovies]}></Results>
+            <div><Results movies={[...this.state.genreMovies]} selectMovie={this.setSelectedMovie}></Results>
           </div>
         </div>
         
