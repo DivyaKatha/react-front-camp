@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import Home from './Home/Home'
-import ViewMovie from './ViewMovie/ViewMovie'
+import Home from './Components/Home/Home'
+import ViewMovie from './Components/ViewMovie/ViewMovie'
 import { BrowserRouter, Route} from 'react-router-dom';
 
 

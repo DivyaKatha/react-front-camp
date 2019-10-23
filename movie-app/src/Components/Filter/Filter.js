@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './Filter.css'
 
-class Filter extends Component {
-    highlightClass = {
+const Filter = (props) => {
+    let highlightClass = {
         backgroundColor: '#ff0000',
         color:'white' ,
         margin: '5px',
@@ -12,7 +12,7 @@ class Filter extends Component {
         'borderRadius': '10px' 
     }
 
-    defaultClass ={
+    let defaultClass ={
         backgroundColor: 'rgba(0,0,0,0.5)',
         color:'white',
         margin: '5px',
@@ -22,40 +22,39 @@ class Filter extends Component {
         'borderRadius': '10px' 
     }
    
-    releaseStyle = {...this.defaultClass};
+    let releaseStyle = {...defaultClass};
 
-    ratingStyle  = {...this.defaultClass}
+    let ratingStyle  = {...defaultClass}
 
-    sortBy = (val) => {
+    let sortBy = (val) => {
         if(val === 'releaseDate') {
-            this.releaseStyle = {...this.highlightClass};
-            this.ratingStyle = {...this.defaultClass};
+            releaseStyle = {...highlightClass};
+            ratingStyle = {...defaultClass};
         }
         else if(val === 'rating') {
-            this.releaseStyle = {...this.defaultClass};
-            this.ratingStyle = {...this.highlightClass};
+            releaseStyle = {...defaultClass};
+            ratingStyle = {...highlightClass};
         }
 
-        this.props.sortBy(val);
+        props.sortBy(val);
     }
-    render() {
         return (
             <div className="filter">
                 <div className="container">
                     <div className="found">
-                        {this.props.count} movies found
+                        {props.count} movies found
                     </div>
                     <div className="sortByList">
                         <ul className="sortOptions">
                             <li>SORT BY:</li> 
-                            <li><button style={this.releaseStyle} onClick={() => this.sortBy('releaseDate')} >RELEASE DATE</button></li>
-                            <li><button style={this.ratingStyle} onClick={() => this.sortBy('rating')}>RATING</button></li>
+                            <li><button style={releaseStyle} onClick={() => sortBy('releaseDate')} >RELEASE DATE</button></li>
+                            <li><button style={ratingStyle} onClick={() => sortBy('rating')}>RATING</button></li>
                         </ul>
                     </div>
                 </div>
             </div>
         );
     }
-}
+
 
 export default Filter;

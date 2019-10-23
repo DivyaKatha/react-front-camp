@@ -64,7 +64,7 @@ class ViewMovie extends Component{
             </div>      
            </div>
            <div style={this.headerStyle}> { header }</div> 
-            <div><Results movies={[this.state.genreMovies]} selectMovie={this.setSelectedMovie}></Results>
+            <div><Results movies={this.state.genreMovies} selectMovie={this.setSelectedMovie}></Results>
           </div>
         </div>
         
