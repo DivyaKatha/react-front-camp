@@ -3,12 +3,14 @@ import Search from '../Search/Search'
 import Results from '../Results/Results'
 import Filter from '../Filter/Filter';
 import axios from 'axios';
+import { connect } from "react-redux";
+import { load } from '../../redux/Actions'
+
 
 class Home extends Component {
 
     state = {
         movies: [],
-        searchInput: '',
         fullList: []
     }
     
@@ -18,7 +20,7 @@ class Home extends Component {
         this.setState({ fullList: data.data.data })
         this.props.setMovies([...this.state.fullList]);
         })
-     
+     this.props.getMovies();
     }
     
     onSearchHandler = (input, category) => {
@@ -86,11 +88,23 @@ class Home extends Component {
         return (
             <div className="home">
                 <Search search={(input, category) => this.onSearchHandler(input, category)} ></Search>
-                <Filter count={this.state.movies.length} sortBy={this.onSortHandler} ></Filter>
-                <Results movies={this.state.movies} selectMovie={this.setSelectedMovie}></Results>
+                <Filter count={this.props.movies.length} sortBy={this.onSortHandler} ></Filter>
+                <Results movies={this.props.movies} selectMovie={this.setSelectedMovie}></Results>
             </div>
         );
     }
 }
 
-export default Home;
+const mapStateToProps = (state, ownProps) => {    
+  return {
+      movies : state.movies
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      getMovies: () => load(dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

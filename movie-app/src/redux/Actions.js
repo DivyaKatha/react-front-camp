@@ -1,7 +1,7 @@
 import {SEARCH, LOAD, VIEW} from './Constants';
 import  axios from 'axios';
 
-export const load = dispatch => {
+function load(dispatch) {
     axios.get('https://reactjs-cdp.herokuapp.com/movies').then( data => {
         dispatch({
             type: LOAD,
@@ -17,7 +17,7 @@ export const load = dispatch => {
       });  
 }
 
- export const viewDetails = ( dispatch, movieId) => {
+function viewDetails ( dispatch, movieId){
     axios.get('https://reactjs-cdp.herokuapp.com/movies/'+ movieId.toString()).then( data => {
         console.log(data.data);
         dispatch({
@@ -28,6 +28,11 @@ export const load = dispatch => {
     .catch(error => {
         console.log('Looks like there was a problem: \n', error);
       });  
+}
+
+export {
+    load,
+    viewDetails
 }
 
 
