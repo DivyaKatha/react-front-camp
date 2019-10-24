@@ -2,12 +2,11 @@
     width: 400px;
     display: inline-block;
     border: 1px solid white;
-    margin: 10px;
+    margin: 5px;
     color: whitesmoke;
-    height: 600px
 }
 
 img{
-    height: 90%;
+    height: 85%;
     width: 100%;
 }
