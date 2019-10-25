@@ -1,4 +1,4 @@
-import {SEARCH, LOAD, VIEW} from './Constants';
+import {LOAD, VIEW, UPDATE} from './Constants';
 import  axios from 'axios';
 
 function load(dispatch) {
@@ -7,14 +7,17 @@ function load(dispatch) {
             type: LOAD,
             payload: data.data.data
         })
-        dispatch({
-            type: SEARCH,
-            payload: data.data.data
-          });
     })
     .catch(error => {
         console.log('Looks like there was a problem: \n', error);
       });  
+}
+
+function updateFilteredMovies(dispatch,data){
+    dispatch({
+        type:UPDATE,
+        payload:data
+    });
 }
 
 function viewDetails ( dispatch, movieId){
@@ -32,7 +35,8 @@ function viewDetails ( dispatch, movieId){
 
 export {
     load,
-    viewDetails
+    viewDetails,
+    updateFilteredMovies
 }
 
 

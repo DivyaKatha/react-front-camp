@@ -2,24 +2,13 @@ import React, {Component} from 'react'
 import Search from '../Search/Search'
 import Results from '../Results/Results'
 import Filter from '../Filter/Filter';
-import axios from 'axios';
 import { connect } from "react-redux";
-import { load } from '../../redux/Actions'
+import { load, updateFilteredMovies } from '../../redux/Actions'
 
 
 class Home extends Component {
 
-    state = {
-        movies: [],
-        fullList: []
-    }
-    
     componentDidMount() {
-        axios.get('https://reactjs-cdp.herokuapp.com/movies').then((data) => {
-        this.setState({ movies: data.data.data });
-        this.setState({ fullList: data.data.data })
-        this.props.setMovies([...this.state.fullList]);
-        })
      this.props.getMovies();
     }
     
@@ -27,14 +16,14 @@ class Home extends Component {
     
       let searchResults = []
 
-      if(input){
+      if(input) {
         if(category === 'title'){
-            searchResults = this.state.fullList.filter((movie) => {
+            searchResults = this.props.filteredMovies.filter((movie) => {
              return (movie.title).toUpperCase().includes(input.toUpperCase());
            })
          }
          else if(category === 'genre'){
-            searchResults = this.state.fullList.filter((movie) => {
+            searchResults = this.props.filteredMovies.filter((movie) => {
              let genreList = [];
              movie.genres.forEach(element => {
                 genreList.push(element.toUpperCase());
@@ -42,14 +31,11 @@ class Home extends Component {
              return genreList.includes(input.toUpperCase());
            })
          }
-         
-      this.setState({
-        movies:[...searchResults] 
-      })
+
+      this.props.filterMovies(searchResults);
       }
-      else this.setState({
-            movies:[...this.state.fullList] 
-          })
+      else this.props.filterMovies(this.props.movies);
+
     }
     
     compareReleaseDate (a,b) {
@@ -67,17 +53,15 @@ class Home extends Component {
     }
     
     onSortHandler = (val) => {
-      let movies = [...this.state.fullList];
+      let movies = [...this.props.filteredMovies];
       let sortedMovies = [];
       if(val === 'releaseDate') {
         sortedMovies = movies.sort(this.compareReleaseDate);
       } else if(val === 'rating') {
         sortedMovies = movies.sort(this.compareRating);
       }
-    
-      this.setState({
-        movies: sortedMovies
-      })
+      this.props.filterMovies(sortedMovies);
+
     }
      
     setSelectedMovie = (movie) => {
@@ -89,21 +73,23 @@ class Home extends Component {
             <div className="home">
                 <Search search={(input, category) => this.onSearchHandler(input, category)} ></Search>
                 <Filter count={this.props.movies.length} sortBy={this.onSortHandler} ></Filter>
-                <Results movies={this.props.movies} selectMovie={this.setSelectedMovie}></Results>
+                <Results movies={this.props.filteredMovies} selectMovie={this.setSelectedMovie}></Results>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state, ownProps) => {    
+const mapStateToProps = (state, ownProps) => {  
   return {
-      movies : state.movies
+      movies : state.movies,
+      filteredMovies: state.filteredMovies
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      getMovies: () => load(dispatch)
+      getMovies: () => load(dispatch),
+      filterMovies: (data) => updateFilteredMovies(dispatch,data)
   }
 }
 

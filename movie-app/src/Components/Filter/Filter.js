@@ -12,7 +12,7 @@ const Filter = (props) => {
         'borderRadius': '10px' 
     }
 
-    let defaultClass ={
+    let defaultClass = {
         backgroundColor: 'rgba(0,0,0,0.5)',
         color:'white',
         margin: '5px',
@@ -38,6 +38,7 @@ const Filter = (props) => {
 
         props.sortBy(val);
     }
+
         return (
             <div className="filter">
                 <div className="container">

@@ -11,12 +11,12 @@ class ViewMovie extends Component{
     }
   
     headerStyle = {
-      'text-align': 'left',
       'padding': '5px',
       'backgroundColor': 'grey',
-      'text-align': 'center',
+      'textAlign': 'center',
       'color': 'white'
     }
+    
     findCommonElement(array1, array2) { 
         for(let i = 0; i < array1.length; i++) { 
             for(let j = 0; j < array2.length; j++) { 
