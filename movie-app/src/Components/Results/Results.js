@@ -7,7 +7,7 @@ const Results = (props) => {
         if(props.movies.length) return (
         <div className="results" id="results">{
             props.movies.map((movie, index) => {
-                return  <Movie movie={movie} key={movie.id} selected={props.selectMovie}></Movie>
+                return  <Movie movie={movie} key={movie.id}></Movie>
             })
         }</div>
         ); 

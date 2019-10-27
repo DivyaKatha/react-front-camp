@@ -7,36 +7,19 @@ import { Provider } from 'react-redux';
 import store from './redux/store'
 
 class App extends Component {
-  state = {
-    selectedMovie: null,
-    movies: []
-  }
-
-setSelectedMovie = (movie) => {
-  this.setState({
-    selectedMovie: movie
-  });
-}
-
-setMovies = (movies) => {
-  this.setState({
-    movies: movies
-  })
-}
-
+ 
 render(){
   return (
     <Provider store={store}>
      <BrowserRouter>
     <div className="App">
-      <Route path='/' exact render={() => <Home  selectedMovie={this.setSelectedMovie} setMovies={this.setMovies}/>}/>
-      <Route path='/viewMovie' render={() => <ViewMovie  movie={{...this.state.selectedMovie}}  movies={[...this.state.movies]} />} />
+      <Route path='/' exact render={() => <Home />}/>
+      <Route path='/viewMovie/:id' render={(props) => <ViewMovie {...props}  />} />
     </div>
     </BrowserRouter>
     </Provider>
   );
 }
-
 }
 
 export default App;

@@ -20,7 +20,7 @@ function updateFilteredMovies(dispatch,data){
     });
 }
 
-function viewDetails ( dispatch, movieId){
+async function viewDetails ( dispatch, movieId){
     axios.get('https://reactjs-cdp.herokuapp.com/movies/'+ movieId.toString()).then( data => {
         console.log(data.data);
         dispatch({

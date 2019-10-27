@@ -73,7 +73,7 @@ class Home extends Component {
             <div className="home">
                 <Search search={(input, category) => this.onSearchHandler(input, category)} ></Search>
                 <Filter count={this.props.movies.length} sortBy={this.onSortHandler} ></Filter>
-                <Results movies={this.props.filteredMovies} selectMovie={this.setSelectedMovie}></Results>
+                <Results movies={this.props.filteredMovies}></Results>
             </div>
         );
     }
